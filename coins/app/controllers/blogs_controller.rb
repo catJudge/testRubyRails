@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
   # before_filter :authenticate_user!, except => [:show, :index]
 
   def index
-    @blog = Blog.all
+    @blogs = Blog.all
   end
 
   def show

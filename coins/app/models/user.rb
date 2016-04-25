@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :blogs
 
+  def admin?
+    return @user.is_admin
+  end
+
 end

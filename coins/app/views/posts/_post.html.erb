@@ -1,15 +1,15 @@
-<p>
-  <strong>Title:</strong>
-  <%= post.title %>
-</p>
-
-<p>
-  <strong>Text:</strong>
-  <%= post.text %>
-</p>
-
-<p>
-  <%= link_to 'Destroy Post', [post.blog, post],
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-</p>
+<div class="well">
+  <div>
+    <h2><%= post.title %></h2>
+  </div>
+  <p>
+    <%= post.text %>
+  </p>
+  <% if current_user.is_admin %>
+      <p>
+        <%= link_to 'Destroy Post', [post.blog, post],
+                    method: :delete,
+                    data: {confirm: 'Are you sure?'}, :class => 'btn btn-default' %>
+      </p>
+  <% end %>
+</div>

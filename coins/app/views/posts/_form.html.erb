@@ -1,13 +1,15 @@
-<%= form_for([@blog, @blog.posts.build]) do |f| %>
-    <p>
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </p>
-    <p>
-      <%= f.label :text %><br>
-      <%= f.text_area :text %>
-    </p>
-    <p>
-      <%= f.submit %>
-    </p>
-<% end %>
+<div style="width: 30%">
+  <%= form_for([@blog, @blog.posts.build]) do |f| %>
+      <div class="form-group">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, :autofocus => true, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :text %><br>
+        <%= f.text_area :text, :autofocus => true, class: 'form-control' %>
+      </div>
+      <p>
+        <%= f.submit :class => 'btn btn-default' %>
+      </p>
+  <% end %>
+</div>

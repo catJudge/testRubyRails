@@ -1,6 +1,6 @@
-<h1>Listing blogs</h1>
+<h1>All blogs</h1>
 
-<%= link_to 'New blog', new_blog_path %>
+<%= link_to 'New blog', new_blog_path , :class => 'btn btn-default'%>
 
 <table>
   <tr>
@@ -13,11 +13,11 @@
       <tr>
         <td><%= blog.title %></td>
         <td><%= blog.text %></td>
-        <td><%= link_to 'Show', blog_path(blog) %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
+        <td><%= link_to 'Show', blog_path(blog) , :class => 'btn btn-default'%></td>
+        <td><%= link_to 'Edit', edit_blog_path(blog) , :class => 'btn btn-default'%></td>
         <td><%= link_to 'Destroy', blog_path(blog),
                         method: :delete,
-                        data: {confirm: 'Are you sure?'} %></td>
+                        data: {confirm: 'Are you sure?'} , :class => 'btn btn-default'%></td>
       </tr>
   <% end %>
 </table>

@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
 
-  # before_filter :authenticate_user!, except => [:show, :index]
+  before_filter :authenticate_user!, except: [:show, :index]
 
   def index
     @blogs = Blog.all
@@ -19,8 +19,7 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @blog = @user.blogs.create(blog_params)
+    @blog = current_user.blogs.create(blog_params)
 
     if @blog.save
       redirect_to @blog

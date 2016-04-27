@@ -3,11 +3,11 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-    @user = current_user
-    @blog = @user.blogs.find(params[:blog_id])
-    @post = @blog.posts.create(post_params)
-    @post.user = @user
-
+    @post = Post.create(post_params)
+    @blog = current_user.blogs.find(params[:blog_id])
+    @post.user = current_user
+    @post.blog = @blog
+    @post.save
 
     redirect_to blog_path(@blog)
   end

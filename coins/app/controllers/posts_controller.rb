@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    @blog = current_user.blogs.find(params[:blog_id])
+    @blog = Blog.find(params[:blog_id])
     @post.user = current_user
     @post.blog = @blog
     @post.save

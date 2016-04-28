@@ -5,7 +5,7 @@
   <p>
     <%= post.text %>
   </p>
-  <% if current_user.is_admin %>
+  <% if current_user.is_admin? %>
       <p>
         <%= link_to 'Destroy Post', [post.blog, post],
                     method: :delete,

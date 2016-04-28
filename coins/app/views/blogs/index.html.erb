@@ -1,23 +1,28 @@
-<h1>All blogs</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
 
-<%= link_to 'New blog', new_blog_path , :class => 'btn btn-default'%>
+      <h1>All blogs
+        <%= link_to 'New blog', new_blog_path, :class => 'btn btn-default' %>
+      </h1>
+      <% @blogs.each do |blog| %>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th colspan="3"></th>
-  </tr>
-
-  <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.title %></td>
-        <td><%= blog.text %></td>
-        <td><%= link_to 'Show', blog_path(blog) , :class => 'btn btn-default'%></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) , :class => 'btn btn-default'%></td>
-        <td><%= link_to 'Destroy', blog_path(blog),
-                        method: :delete,
-                        data: {confirm: 'Are you sure?'} , :class => 'btn btn-default'%></td>
-      </tr>
-  <% end %>
-</table>
+          <div class="well">
+            <div>
+              <h2><%= link_to blog.title, blog_path(blog) %></h2>
+            </div>
+            <p>
+              <%= blog.text %>
+            </p>
+            <p>
+              <%= link_to 'Destroy', blog_path(blog),
+                          method: :delete,
+                          data: {confirm: 'Are you sure?'}, :class => 'btn btn-default' %>
+            </p>
+          </div>
+          <!--<td><%= link_to 'Show', blog_path(blog), :class => 'btn btn-default' %></td>-->
+          <!--<td><%= link_to 'Edit', edit_blog_path(blog), :class => 'btn btn-default' %></td>-->
+      <% end %>
+    </div>
+  </div>
+</div>

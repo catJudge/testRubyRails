@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   has_many :posts , :dependent => :destroy
   has_many :blogs , :dependent => :destroy
 
+  validates :name, presence: true, length: { minimum: 2 }
+  before_save { self.email = email.downcase }
+
   def admin?
     return @user.is_admin
   end

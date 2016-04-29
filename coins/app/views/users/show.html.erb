@@ -1,4 +1,25 @@
-<h3>User</h3>
-<p>Name: <%= @user.name if @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
-<p>Email: <%= @user.is_admin %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <h3>User</h3>
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Admin</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><%= @user.name if @user.name %></td>
+          <td><%= @user.email if @user.email %></td>
+          <td><%= @user.is_admin %></td>
+        </tr>
+        </tbody>
+      </table>
+      <%= link_to 'All users', users_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+</div>
+

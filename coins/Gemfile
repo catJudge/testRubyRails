@@ -51,3 +51,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'coffee-script-source', '1.8.0'
+
+group :test do
+  gem 'rspec',  '~>  2.14.1'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers', require: false
+end

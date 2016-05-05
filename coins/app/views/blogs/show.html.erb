@@ -25,8 +25,10 @@
       <% end %>
 
 
-      <h3>Posts</h3>
-      <%= render @blog.posts %>
+      <% if @blog.posts.count != 0 %>
+          <h3>Posts</h3>
+          <%= render @blog.posts %>
+      <% end %>
     </div>
   </div>
 </div>

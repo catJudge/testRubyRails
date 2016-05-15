@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 20160515181109) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.boolean  "is_admin",               default: false
-    t.string   "name"
+    t.boolean  "is_admin",               default: false, null: false
+    t.string   "name",                                   null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

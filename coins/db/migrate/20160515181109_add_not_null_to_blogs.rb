@@ -9,5 +9,8 @@ class AddNotNullToBlogs < ActiveRecord::Migration
     change_column_null :posts, :blog_id, false
     change_column_null :posts, :user_id, false
 
+    change_column_null :users, :is_admin, false
+    change_column_null :users, :name, false
+
   end
 end

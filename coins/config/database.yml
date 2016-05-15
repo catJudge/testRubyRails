@@ -18,5 +18,5 @@ test:
 production:
   <<: *default
   database: test-ruby-rails_production
-  username: test_ruby_rails
+  username: <%= ENV['TEST-RUBY-RAILS_DATABASE_USERNAME'] %>
   password: <%= ENV['TEST-RUBY-RAILS_DATABASE_PASSWORD'] %>

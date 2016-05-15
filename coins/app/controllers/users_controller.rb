@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-
   def index
     if current_user.is_admin?
       @users = User.all
@@ -19,6 +18,10 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    unless @user == current_user or current_user.is_admin
+      redirect_to :root, :alert => "Access denied."
+    end
+
   end
 
   def update

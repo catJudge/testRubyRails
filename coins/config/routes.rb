@@ -4,12 +4,6 @@ Rails.application.routes.draw do
 
   resources :users
 
-  # resources :users do
-  #   resources :blogs do
-  #     resources :posts
-  #   end
-  # end
-
   resources :blogs do
     resources :posts
   end

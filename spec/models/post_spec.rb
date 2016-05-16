@@ -1,21 +1,24 @@
+require 'rspec'
 require 'spec_helper'
 
-describe Post do
+describe Post, type: :model do
+  describe 'with valid post' do
+    before { @post = build(:post) }
 
-  before(:each) do
-    @post = Post.new
+    subject { @post }
+
+    it { should respond_to :text }
+    it { should respond_to :title }
+    it { should respond_to :user_id }
+    it { should respond_to :blog_id }
+    it { should be_valid }
   end
 
-  it "should require title" do
-    @post.title = nil
-    @post.should_not be_valid
-    @post.errors.on(:title).should_not be_nil
+  describe 'with invalid post' do
+    before { @post = build(:post, text: 'lol', title: 'lollol', user_id: nil, blog_id: nil) }
+
+    subject { @post }
+
+    it { should_not be_valid }
   end
-
-  it { should belong_to(:user) }
-  it { should belong_to(:blog) }
-  it { should validate_presence_of(:title) }
-  it { should allow_value('test').for(:title) }
-  it { should_not allow_value('t').for(:title) }
-
 end

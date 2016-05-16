@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:new, :create, :destroy]
+  before_filter :find_user, except: [:index]
 
   def index
     if current_user.is_admin?
@@ -10,14 +11,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     unless @user == current_user or current_user.is_admin
       redirect_to :back, :alert => "Access denied."
     end
   end
 
   def edit
-    @user = User.find(params[:id])
     unless @user == current_user or current_user.is_admin
       redirect_to :root, :alert => "Access denied."
     end
@@ -25,8 +24,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-
     if @user.update(user_params)
       redirect_to @user
     else
@@ -37,6 +34,10 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:is_admin)
+  end
+
+  def find_user
+    @user = User.find(params[:id])
   end
 
 end

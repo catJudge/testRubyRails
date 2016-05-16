@@ -1,13 +1,13 @@
 class BlogsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:show, :index]
+  before_filter :find_user, except:[ :index, :new , :create]
 
   def index
     @blogs = Blog.all
   end
 
   def show
-    @blog = Blog.find(params[:id])
   end
 
   def new
@@ -15,7 +15,6 @@ class BlogsController < ApplicationController
   end
 
   def edit
-    @blog = Blog.find(params[:id])
   end
 
   def create
@@ -29,7 +28,6 @@ class BlogsController < ApplicationController
   end
 
   def update
-    @blog = Blog.find(params[:id])
 
     if @blog.update(blog_params)
       redirect_to @blog
@@ -48,5 +46,9 @@ class BlogsController < ApplicationController
   private
   def blog_params
     params.require(:blog).permit(:title, :text)
+  end
+
+  def find_user
+    @blog = Blog.find(params[:id])
   end
 end

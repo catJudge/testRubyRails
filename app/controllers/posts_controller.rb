@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-    @post = Post.create(post_params)
+    @post = Post.new(post_params)
     @blog = Blog.find(params[:blog_id])
     @post.user = current_user
     @post.blog = @blog

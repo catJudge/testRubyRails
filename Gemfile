@@ -29,9 +29,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'coffee-script-source', '1.8.0'
 
 group :test do
-  gem 'rspec',  '~>  2.14.1'
-  gem 'rspec-rails'
+  gem 'rspec',  '~>  3.4.0'
+  gem 'rspec-rails',  '~>  3.0'
   gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers', '~> 3.1'
 end
